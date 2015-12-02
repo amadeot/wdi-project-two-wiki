@@ -21,4 +21,4 @@ CREATE TABLE categories(
 
 CREATE TABLE articles_categories(
   article_id REFERENCES articles(id),
-  catergory_id REFERENCES categories(id));
+  category_id REFERENCES categories(id));

@@ -9,7 +9,7 @@ User Stories:
 2. A person should be able to create an account as a user.
 3. A user should be able to log in.
 4. A user should be able to view a list of all articles(buildings) currently created
-5. A user should be able to create a new artice, which will list them as the author and the current timestamp as the most recent edit.
+5. A user should be able to create a new article, which will list them as the author and the current timestamp as the most recent edit.
 6. A user should be able to click on an author of an article to contact them.
 7. A user should be able to edit an already existing article.
 8. When a user edits an article, it should also update the author and timestamp to the current user. 
