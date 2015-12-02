@@ -1,23 +1,24 @@
-CREATE TABLE user(
-  id INTEGER PRIMARY KEY,
-  name VARCHAR,
-  email VARCHAR,
-  password ?);
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS articles;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS articles_categories;
 
-CREATE TABLE article(
+CREATE TABLE users(
+  id INTEGER PRIMARY KEY,
+  username VARCHAR,
+  email VARCHAR);
+
+CREATE TABLE articles(
   id INTEGER PRIMARY KEY,
   header VARCHAR,
   body_text TEXT,
-  author_id REFERENCES user(id)
-  time_created TIME,
-  edit_id REFERENCES user(id),
-  time_edited TIME);
+  user_id INTEGER REFERENCES users(id),
+  updated_at DATETIME);
 
-CREATE TABLE category(
+CREATE TABLE categories(
   id INTEGER PRIMARY KEY,
-  type VARCHAR,
-  );
+  name VARCHAR);
 
-CREATE TABLE article_category(
-  article(id),
-  category(id));
+CREATE TABLE articles_categories(
+  article_id REFERENCES articles(id),
+  catergory_id REFERENCES categories(id));

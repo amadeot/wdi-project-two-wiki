@@ -13,7 +13,7 @@ Add
 --------
 User
 ------
--name
+-username
 -email
 -password
 --------
@@ -28,8 +28,6 @@ Article
 -header
 -text
 -author_id
--edit_id
--time_created
 -time_edited
 --------
 *
