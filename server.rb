@@ -17,7 +17,7 @@ module App
     end
 
     post "/sign_up" do
-      User.create(username: params["username"], email: params["email"])
+      User.create(username: params["username"], email: params["email"], password: params[:password], password_confirmation: params[:password_confirmation])
       redirect to "/sign_in"
     end
 
@@ -26,9 +26,13 @@ module App
     end
 
     post "/sessions" do 
-      user = User.find_by({username: params[:username]})
-      session[:user_id] = user.id
-      redirect to "/home"
+      user = User.find_by({username: params[:username]}).try(:authenticate, params[:password])
+      if user
+        session[:user_id] = user.id
+        redirect to "/home"
+      else
+        redirect to "/sign_in"
+      end
     end
 
     delete "/sessions" do
@@ -36,10 +40,10 @@ module App
       redirect to "/"
     end
 
-    get "/list_all_articles" do
+    get "/articles" do
       redirect to "/" if !session[:user_id]
       @articles = Article.all
-      erb :list_all_articles
+      erb :list_all_articles # erb :'articles/index'
     end
 
     get "/articles/new" do 
@@ -65,11 +69,26 @@ module App
       erb :edit_article
     end
 
-    post "/articles/:id" do
+    patch "/articles/:id" do
       article = Article.find(params[:id])
+      @category = Category.find_by(name: params[:name]) || Category.create(name: params[:name])
       article.update(header: params[:header], body_text: params[:body_text], user_id: session[:user_id], updated_at: DateTime.now)
+      article.categories.push(@category)
+      article.save
       redirect to "/articles/#{params[:id]}"
     end
 
+    get "/categories" do
+      redirect to "/" if !session[:user_id]
+      @categories = Category.all
+      erb :list_categories
+    end
+
+    get "/categories/:id" do
+      redirect to "/" if !session[:user_id]
+      @category = Category.find(params[:id])
+      @articles = @category.articles
+      erb :list_all_articles
+    end
   end
 end

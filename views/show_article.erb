@@ -3,6 +3,10 @@
 <p>Last edit at: <%= @article.updated_at %></p>
 <div class="article-body">
   <p><%= @article.body_text %></p>
+  <p>List of Categories:</p>
+  <% @article.categories.each do |category| %>
+    <p> <a href="/categories/<%= category.id %>"> <%= category.name %> </a> </p>
+  <% end %>
   <a href="/articles/<%= @article.id %>/edit">Edit this article</a>
 </div>
 <a href="/home">Home</a>

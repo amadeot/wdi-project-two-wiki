@@ -7,3 +7,4 @@ ActiveRecord::Base.establish_connection(
 Dir.glob("models/*.rb").each do |path|
   require_relative "../#{path}"
 end 
+

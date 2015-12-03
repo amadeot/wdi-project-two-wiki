@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS articles_categories;
 
 CREATE TABLE users(
   id INTEGER PRIMARY KEY,
+  password_digest VARCHAR,
   username VARCHAR,
   email VARCHAR);
 

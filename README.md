@@ -13,4 +13,8 @@ User Stories:
 6. A user should be able to click on an author of an article to contact them.
 7. A user should be able to edit an already existing article.
 8. When a user edits an article, it should also update the author and timestamp to the current user. 
-9. A user should be able to add a category (either in edits or when creating an article) which will then link to all articles with the same category.
+9. A user should be able to add a category that is already assigned to an article (either in edits or when creating an article) which will then link to all articles with the same category.
+10. A user should be able to view a list of categories
+11. A user should be able to view a list of all buildings related to that category.
+12. A user should be able to edit their password, email, and username
+13. A user should be able to s

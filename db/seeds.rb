@@ -1,8 +1,8 @@
 require_relative "config"
 
 users = [
-  {username: "deo", email: "deo@ama.deo"},
-  {username: "default admin", email:"admin@ad.min"}
+  {username: "deo", email: "deo@ama.deo", password_digest: "$2a$10$nh1vnGMZPVDDq.0er6oQweH7l49DyJzj5sFxSNenCy/rHp2azIO8O"},
+  {username: "default admin", email:"admin@ad.min", password_digest: "$2a$10$nh1vnGMZPVDDq.0er6oQweH7l49DyJzj5sFxSNenCy/rHp2azIO8O"}
 ]
 
 User.create(users)
@@ -22,3 +22,8 @@ categories = [
 ]
 
 Category.create(categories)
+
+a1 = Article.first
+c1 = Category.first
+
+a1.categories.push(c1)
