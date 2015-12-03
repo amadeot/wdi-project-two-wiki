@@ -1,0 +1,8 @@
+<h1><%= @article.header %></h1>
+<p>Last edit by: <a href="mailto:<%= @author.email %>"><%= @author.username %></a></p>
+<p>Last edit at: <%= @article.updated_at %></p>
+<div class="article-body">
+  <p><%= @article.body_text %></p>
+  <a href="/articles/<%= @article.id %>/edit">Edit this article</a>
+</div>
+<a href="/home">Home</a>
