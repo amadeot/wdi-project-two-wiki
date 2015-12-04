@@ -111,5 +111,11 @@ module App
       erb :log
     end
 
+    get "/edit_user/:id"
+      redirect to "/" if !session[:user_id]
+      @user = User.find(session[:user_id])
+      erb :edit_user
+    end
+
   end
 end
