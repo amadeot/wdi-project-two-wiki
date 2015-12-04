@@ -2,7 +2,7 @@ module App
   class Server < Sinatra::Base
     set :method_override, true
     enable :sessions
-
+    $markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
     get "/" do 
       redirect to "/home" if session[:user_id]
       erb :index
@@ -10,11 +10,12 @@ module App
 
     get "/home" do
       redirect to "/" if !session[:user_id]
+      @user = User.find(session[:user_id])
       erb :home
     end
 
     get "/sign_up" do
-      erb :sign_up
+      erb :'users/sign_up'
     end
 
     post "/sign_up" do
@@ -23,7 +24,7 @@ module App
     end
 
     get "/sign_in" do
-      erb :sign_in
+      erb :'users/sign_in'
     end
 
     post "/sessions" do 
@@ -44,12 +45,12 @@ module App
     get "/articles" do
       redirect to "/" if !session[:user_id]
       @articles = Article.all
-      erb :list_all_articles # erb :'articles/index'
+      erb :'articles/list_all_articles'
     end
 
     get "/articles/new" do 
       redirect to "/" if !session[:user_id]
-      erb :create_article
+      erb :'articles/create_article'
     end
 
     post "/articles/new" do 
@@ -66,20 +67,20 @@ module App
         @editor = User.find(@article.user_id)
       end
       @author = User.find(@article.user_id)
-      erb :show_article
+      erb :'articles/show_article'
     end
 
     get "/articles/:id/log" do
       redirect to "/" if !session[:user_id]
       @editors = Editor.where(article_id: params[:id])
       @article = Article.find(params[:id])
-      erb :log
+      erb :'other_lists/log'
     end
 
     get "/articles/:id/edit" do 
       redirect to "/" if !session[:user_id]
       @article = Article.find(params[:id])
-      erb :edit_article
+      erb :'articles/edit_article'
     end
 
     patch "/articles/:id" do
@@ -95,26 +96,32 @@ module App
     get "/categories" do
       redirect to "/" if !session[:user_id]
       @categories = Category.all
-      erb :list_categories
+      erb :'other_lists/list_categories'
     end
 
     get "/categories/:id" do
       redirect to "/" if !session[:user_id]
       @category = Category.find(params[:id])
       @articles = @category.articles
-      erb :list_all_articles
+      erb :'articles/list_all_articles'
     end
 
     get "/log" do
       redirect to "/" if !session[:user_id]
       @editors = Editor.all
-      erb :log
+      erb :'other_lists/log'
     end
 
-    get "/edit_user/:id"
+    get "/user/edit" do
       redirect to "/" if !session[:user_id]
       @user = User.find(session[:user_id])
-      erb :edit_user
+      erb :'users/edit_user'
+    end
+
+    patch "/user" do 
+      user = User.find(session[:user_id])
+      user.update(username: params[:username], email: params[:email])
+      redirect to "/home"
     end
 
   end

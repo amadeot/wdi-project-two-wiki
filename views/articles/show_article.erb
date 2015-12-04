@@ -4,7 +4,7 @@
 <p>Last edit by: <%= @editor.username %></p>
 <p><a href="/articles/<%= @article.id %>/log">View Edit Log</a></p>
 <div class="article-body">
-  <p><%= @article.body_text %></p>
+  <%= $markdown.render(@article.body_text) %>
   <p>List of Categories:</p>
   <% @article.categories.each do |category| %>
     <p> <a href="/categories/<%= category.id %>"> <%= category.name %> </a> </p>

@@ -1,0 +1,12 @@
+<h2>Edit <%= @user.username %></h2>
+<form action="/user" method="POST">
+  <input type="hidden" name="_method" value="patch">
+  <label for="username_edit">Username</label>
+  <input type="text" id="username_edit" name="username" placeholder="Edit username here" value="<%= @user.username %>">
+  <label for "email_edit">Email</label>
+  <input type="text" id="email_edit" name="email" placeholder="Edit email here" value="<%= @user.email %>">
+  
+<!--   <input type="password" name="password_digest" placeholder="Edit Password">
+  <input type="password" name="password_confirmation" placeholder="Confirm new password"> -->
+  <input type="submit">
+</form>

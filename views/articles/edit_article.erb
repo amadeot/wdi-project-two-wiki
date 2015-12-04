@@ -2,7 +2,8 @@
 <form action="/articles/<%= @article.id %>" method="POST">
   <input type="hidden" name="_method" value="patch">
   <input type="text" name="header" placeholder="Edit title here" value="<%= @article.header %>">
-  <input type="text" name="body_text" placeholder="Edit content here" value="<%= @article.body_text %>">
+  <textarea rows="5" cols="80" type="text" name="body_text"><%= @article.body_text %>
+  </textarea>
   <input type="text" name="name" placeholder="Add a category here">
   <input type="submit">
 </form>
