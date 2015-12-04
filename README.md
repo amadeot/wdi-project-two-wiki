@@ -17,4 +17,4 @@ User Stories:
 10. A user should be able to view a list of categories
 11. A user should be able to view a list of all buildings related to that category.
 12. A user should be able to edit their password, email, and username
-13. A user should be able to s
+13. A user should be able to see a list of people who have edited the page and when it was edited.

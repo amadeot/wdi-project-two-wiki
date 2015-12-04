@@ -7,6 +7,7 @@ module App
       redirect to "/home" if session[:user_id]
       erb :index
     end
+
     get "/home" do
       redirect to "/" if !session[:user_id]
       erb :home
@@ -52,15 +53,27 @@ module App
     end
 
     post "/articles/new" do 
-      Article.create(header: params[:header], body_text: params[:body_text], user_id: session[:user_id], updated_at: DateTime.now)
+      Article.create(header: params[:header], body_text: params[:body_text], user_id: session[:user_id], created_at: DateTime.now, updated_at: DateTime.now)
       redirect to "/home"
     end
 
     get "/articles/:id" do
       redirect to "/" if !session[:user_id]
       @article = Article.find(params[:id])
+      if Editor.find_by(article_id: params[:id])
+        @editor = User.find(Editor.where(article_id: params[:id]).last.user_id)
+      else 
+        @editor = User.find(@article.user_id)
+      end
       @author = User.find(@article.user_id)
       erb :show_article
+    end
+
+    get "/articles/:id/log" do
+      redirect to "/" if !session[:user_id]
+      @editors = Editor.where(article_id: params[:id])
+      @article = Article.find(params[:id])
+      erb :log
     end
 
     get "/articles/:id/edit" do 
@@ -72,9 +85,10 @@ module App
     patch "/articles/:id" do
       article = Article.find(params[:id])
       @category = Category.find_by(name: params[:name]) || Category.create(name: params[:name])
-      article.update(header: params[:header], body_text: params[:body_text], user_id: session[:user_id], updated_at: DateTime.now)
+      article.update(header: params[:header], body_text: params[:body_text], updated_at: DateTime.now)
       article.categories.push(@category)
       article.save
+      Editor.create(user_id: session[:user_id], article_id: params[:id], updated_at: DateTime.now)
       redirect to "/articles/#{params[:id]}"
     end
 
@@ -90,5 +104,12 @@ module App
       @articles = @category.articles
       erb :list_all_articles
     end
+
+    get "/log" do
+      redirect to "/" if !session[:user_id]
+      @editors = Editor.all
+      erb :log
+    end
+
   end
 end

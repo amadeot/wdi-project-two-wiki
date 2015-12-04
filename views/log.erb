@@ -1,0 +1,20 @@
+<% if @article %>
+<p>Edits to <a href="/articles/<%= @article.id %>"><%= @article.header %></a></p>
+
+<% else %>
+
+<p>All Edits</p>
+
+<% end %>
+
+<ul>
+  <% @editors.each do |editor| %>
+    <li>
+      <% if !@article %>
+        Article Edited: <a href="/articles/<%= editor.article_id %>"><%= Article.find(editor.article_id).header %></a>
+      <% end %>
+      Edited by: <%= User.find(editor.user_id).username %>
+      Edited at: <%= editor.updated_at %>
+    </li>
+  <% end %>
+</ul>
