@@ -37,7 +37,7 @@ module App
       end
     end
 
-    delete "/sessions" do
+    get "/signout" do
       session[:user_id] = nil
       redirect to "/"
     end
@@ -85,10 +85,14 @@ module App
 
     patch "/articles/:id" do
       article = Article.find(params[:id])
-      @category = Category.find_by(name: params[:name]) || Category.create(name: params[:name])
-      article.update(header: params[:header], body_text: params[:body_text], updated_at: DateTime.now)
-      article.categories.push(@category)
-      article.save
+      if params[:name] = nil
+
+      else
+        @category = Category.find_by(name: params[:name]) || Category.create(name: params[:name])
+        article.update(header: params[:header], body_text: params[:body_text], updated_at: DateTime.now)
+        article.categories.push(@category)
+        article.save
+      end
       Editor.create(user_id: session[:user_id], article_id: params[:id], updated_at: DateTime.now)
       redirect to "/articles/#{params[:id]}"
     end
