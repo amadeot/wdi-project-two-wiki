@@ -11,14 +11,16 @@
   <%= yield %>
 </div>
 <%if session[:user_id]%>
-  <footer>  
-    <a href="/articles/new"><button>New Article</button></a>
-    <a href="/articles"><button>List of Articles</button></a>
-    <a href="/categories"><button>List of Categories</button></a>
-    <a href="/log"><button>Log of All Changes</button></a>
-    <a href="/user/edit"><button>Edit my Information</button></a>
-    <a href="/signout"><button>Sign Out</button></a>
-  </footer>
+  <div class="footer-content">
+    <footer>  
+      <a href="/articles/new"><button>New Article</button></a>
+      <a href="/articles"><button>List of Articles</button></a>
+      <a href="/categories"><button>List of Categories</button></a>
+      <a href="/log"><button>Log of All Changes</button></a>
+      <a href="/user/edit"><button>Edit my Information</button></a>
+      <a href="/signout"><button>Sign Out</button></a>
+    </footer>
+  </div>
 <% end %>
 </body>
 </html>

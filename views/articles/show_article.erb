@@ -1,14 +1,21 @@
-<h1><%= @article.header %></h1>
-<p>Created by: <a href="mailto:<%= @author.email %>"><%= @author.username %></a></p>
-<p>Last edit at: <%= @article.updated_at %></p>
-<p>Last edit by: <%= @editor.username %></p>
+
+<h1 class="article header"><%= @article.header %></h1>
+<div class="article info">
+  <p>Created by: <a href="mailto:<%= @author.email %>"><%= @author.username %></a></p>
+  <p>Last edit at: <%= @article.updated_at %></p>
+  <p>Last edit by: <%= @editor.username %></p>
 <p><a href="/articles/<%= @article.id %>/log">View Edit Log</a></p>
-<div class="article-body">
-  <%= $markdown.render(@article.body_text) %>
+</div>
+<div class="article body">
+  <div class="article text">
+    <%= $markdown.render(@article.body_text) %>
+  </div>
+  <div class="category info">
   <p>List of Categories:</p>
   <% @article.categories.each do |category| %>
     <p> <a href="/categories/<%= category.id %>"> <%= category.name %> </a> </p>
   <% end %>
+  </div>
   <a href="/articles/<%= @article.id %>/edit">Edit this article</a>
 </div>
 <a href="/home">Home</a>

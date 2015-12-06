@@ -1,9 +1,10 @@
-<p><a href="/categories/new">Create a new Category</a></p>
-<p>View Articles by Category</p>
-<ul>
-  <% @categories.each do |category| %>
-    <li>
-      <a href="/categories/<%= category.id%>"><%= category.name %></a>
-    </li>
-  <% end %>
-</ul>
+<h1 class="category header">View Articles by Category</h1>
+<div class="category list">
+  <ul>
+    <% @categories.each do |category| %>
+      <li>
+        <a href="/categories/<%= category.id%>"><%= category.name %></a>
+      </li>
+    <% end %>
+  </ul>
+</div>

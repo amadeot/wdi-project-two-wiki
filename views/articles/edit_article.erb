@@ -1,9 +1,12 @@
-<h2>Edit <%= @article.header %></h2>
-<form action="/articles/<%= @article.id %>" method="POST">
-  <input type="hidden" name="_method" value="patch">
-  <input type="text" name="header" placeholder="Edit title here" value="<%= @article.header %>">
-  <textarea rows="5" cols="80" type="text" name="body_text"><%= @article.body_text %>
-  </textarea>
-  <input type="text" name="name" placeholder="Add a category here">
-  <input type="submit">
-</form>
+<h1 class="article header">Edit <%= @article.header %></h1>
+<div class="article form edit">
+  <form action="/articles/<%= @article.id %>" method="POST">
+    <input type="hidden" name="_method" value="patch">
+    <input type="text" name="header" placeholder="Edit title here" value="<%= @article.header %>">
+    <textarea rows="5" cols="80" type="text" name="body_text">
+      <%= @article.body_text %>
+    </textarea>
+    <input type="text" name="name" placeholder="Add a category here">
+    <input type="submit">
+  </form>
+</div>

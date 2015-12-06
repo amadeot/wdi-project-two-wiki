@@ -1,3 +1,8 @@
 footer{
   text-align: center;
 }
+div{
+  border-style: solid;
+  border-width: 1px;
+  border-color: black; 
+}
