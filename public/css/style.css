@@ -1,32 +1,32 @@
 /*basic gobal css*/
 body{
   text-align: center;
-  font-family: palatino;
+  font-family: helvetica;
+  background-image: url("/images/cityscape.jpg");
 }
 footer{
   display: inline-block;
 }
-button{
-  font-size: 20px;
-  width: 200px;
-  margin: 10px;
-  border-radius: 10px;
-}
+button,
 input{
   font-size: 20px;
+  width: 210px;
+  margin: 10px;
+  border-radius: 5px;
 }
+
 /*layout*/
 #content,
 .footer-content{
-  background-color: red;
+  background-color: white;
   width: 50%;
   margin: auto;
   border-radius: 5px;
 }
-
-
 /*headers*/
-
+.header{
+  padding-top: 20px;
+}
 
 
 
