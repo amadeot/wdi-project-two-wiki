@@ -5,7 +5,7 @@ footer{
   display: inline-block;
 }
 ul{
-  list-style-position: inside;
+  list-style-type: none;
 }
 div{
   border-style: solid;
