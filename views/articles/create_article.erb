@@ -1,4 +1,17 @@
 <h2 class="article header">Create an article about a new building</h2>
+<p><a class='activate_modal' name='instructions' href='#'>For instructions on how to use markdown features click here</a></p>
+
+<div id='mask' class='close_modal'></div>
+
+<div id='instructions' class='modal_window'>
+  <p>Formatting Instructions:</p>
+  <p>*word* renders <i>word</i></p>
+  <p>**word** renders <b>word</b></p>
+  <p>#WARNINGS is written as such to make it a header</p>
+  <p>##How to get into building is written as such to make it a secondary header</p>
+  <p>Make sure to format apartment numbers in the same</p>
+  <p>##Header format.</p>
+</div>
 <div class="article form new">
   <form class ="new-article-input" action="/articles/new" method="POST">
     <input type="text" name="header" placeholder="Address">
@@ -7,11 +20,11 @@
 
 insert here
 
-##How to get in to building
+##How to get into building
 
 insert here
 
-###Format apartment numbers like this
+##Format apartment numbers like this
 
 insert relevant information about the apartment here
     </textarea>

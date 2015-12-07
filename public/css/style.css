@@ -1,3 +1,6 @@
+* {
+  border: 1px red solid;
+}
 body{
   text-align: center;
 }
@@ -15,25 +18,16 @@ div{
 }
 
 #mask{  
-  position:absolute; /* important */  
-  top:0px; /* start from top */  
-  left:0px; /* start from left */  
-  height:100%; /* cover the whole page */  
-  width:100%;  /* cover the whole page */  
-  display:none; /* don't show it '*/  
+  position:absolute; 
+  top:0px;  
+  left:0px; 
+  height:100%;
+  width:100%; 
+  display:none; 
   background-color: black;  
 }  
-  
 .modal_window{  
-  position:absolute; /* important so we can position it on center later */  
-  display:none; /* don't show it */  
+  position:absolute;  
+  display:none;
   color:white;  
-}  
-  
-/* style a specific modal window  */  
-#modal_window{  
-  padding:50px;  
-  border:1px solid gray;  
-  background: #246493;  
-  color:black;  
 }  

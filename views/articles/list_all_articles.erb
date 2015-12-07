@@ -3,11 +3,9 @@
   <p class="article create"><a href="/articles/new">Create a new article</a></p>
 </div>
 <div class="article list">
-  <ul>
-    <% @articles.each do |article| %>
-      <li>
-        <a href="/articles/<%= article.id%>"><%= article.header %></a>
-      </li>
-    <% end %>
-  </ul>
+  <% @articles.each do |article| %>
+    <p>
+      <a href="/articles/<%= article.id%>"><%= article.header %></a>
+    </p>
+  <% end %>
 </div>

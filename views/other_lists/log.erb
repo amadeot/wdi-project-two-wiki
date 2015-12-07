@@ -12,15 +12,13 @@
 
 <% end %>
 <div class="log list">
-  <ul>
-    <% @editors.each do |editor| %>
-      <li>
-        <% if !@article %>
-          Article Edited: <a href="/articles/<%= editor.article_id %>"><%= Article.find(editor.article_id).header %></a>
-        <% end %>
-        Edited by: <%= User.find(editor.user_id).username %>
-        Edited at: <%= editor.updated_at %>
-      </li>
-    <% end %>
-  </ul>
+  <% @editors.each do |editor| %>
+    <p>
+      <% if !@article %>
+        Article Edited: <a href="/articles/<%= editor.article_id %>"><%= Article.find(editor.article_id).header %></a>
+      <% end %>
+      Edited by: <%= User.find(editor.user_id).username %>
+      Edited at: <%= editor.updated_at %>
+    </p>
+  <% end %>
 </div>

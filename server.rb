@@ -2,7 +2,6 @@ module App
   class Server < Sinatra::Base
     set :method_override, true
     enable :sessions
-    $markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
     get "/" do 
       redirect to "/home" if session[:user_id]
       erb :index
@@ -61,6 +60,7 @@ module App
     get "/articles/:id" do
       redirect to "/" if !session[:user_id]
       @article = Article.find(params[:id])
+      @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
       if Editor.find_by(article_id: params[:id])
         @editor = User.find(Editor.where(article_id: params[:id]).last.user_id)
       else 

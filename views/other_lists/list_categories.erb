@@ -1,10 +1,8 @@
 <h1 class="category header">View Articles by Category</h1>
 <div class="category list">
-  <ul>
-    <% @categories.each do |category| %>
-      <li>
-        <a href="/categories/<%= category.id%>"><%= category.name %></a>
-      </li>
-    <% end %>
-  </ul>
+  <% @categories.each do |category| %>
+    <p>
+      <a href="/categories/<%= category.id%>"><%= category.name %></a>
+    </p>
+  <% end %>
 </div>
