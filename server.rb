@@ -89,7 +89,6 @@ module App
       article.update(header: params[:header], body_text: params[:body_text], updated_at: DateTime.now)
       article.categories.push(@category)
       article.save
-      end
       Editor.create(user_id: session[:user_id], article_id: params[:id], updated_at: DateTime.now)
       redirect to "/articles/#{params[:id]}"
     end
