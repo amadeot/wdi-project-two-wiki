@@ -10,45 +10,23 @@ See/Display
 Add
 
 
---------
-User
-------
--username
--email
--password
---------
-+
-|
-|
-|
-^
---------
-Article
-------
--header
--text
--author_id
--time_edited
---------
-*
-|
-|
-|
-*
---------
-article_catergory
-------
--article_id
--category_id
-------
-*
-|
-|
-|
-*
---------
-Category
-------
--type
---------
++---------+       +-------------+         +-------------+
+|users    |       |editors      |         |articles     |
++-------+ |       +------+      |         +-------+     |
+|id       |*+---+*|id           |*+-----+*|id           |
+|username |       |user_id      |         |header       |
+|password |       |article_id   |         |body_text    |
+|email    |       |updated_at   |         |user_id      |
++---------+       +-------------+         |created_at   |
+                                          |updated_at   |
+                                          +-------------+
+                                              *
+                 ------------------------------
+                 *
+         +-------------------+     +--------------+
+         |articles_categories|     |categories    |
+         +-------+           |*+-+*+-------+      |
+         |article_id         |     |id            |
+         |category_id        |     |name          |
+         +-------------------+     +--------------+
 
