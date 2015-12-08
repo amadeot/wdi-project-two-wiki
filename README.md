@@ -2,7 +2,10 @@
 
 The purpose of this project is to create a collaborative, simple wiki for delivery bikers to use so that they can quickly get information about a building, including possible necessary directions and warnings about the building before entering it.
 
-INSERT LINK HERE
+Deployed version:
+
+https://tranquil-bayou-7004.herokuapp.com/
+
 
 Technologies used:
 HTML
