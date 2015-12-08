@@ -18,10 +18,11 @@ input{
 /*layout*/
 #content,
 .footer-content{
-  background-color: white;
   width: 50%;
   margin: auto;
   border-radius: 5px;
+  background: rgba(255, 255, 255, .5); 
+
 }
 /*headers*/
 .header{
